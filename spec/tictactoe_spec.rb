@@ -20,19 +20,19 @@ describe TicTacToe do
 
     end
 
-    it "outputs an empty board" do
+    # it "outputs an empty board" do
 
-        # Arrange
-        # tictactoe = described_class.new
+    #     # Arrange
+    #     # tictactoe = described_class.new
     
-        # Act
-        position = [["X", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
+    #     # Act
+    #     position = [["X", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    #     expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
     
-        puts result = tictactoe.display_board()
+    #     puts result = tictactoe.display_board()
     
-        # Assert
-        expect(result).to eq(expected_board)
+    #     # Assert
+    #     expect(result).to eq(expected_board)
     
-        end
+    #     end
 end

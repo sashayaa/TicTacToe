@@ -10,5 +10,6 @@ class TicTacToe
         @board
     end
 
-    def gaming_board
+    def update_gaming_board()
+    end
 end
