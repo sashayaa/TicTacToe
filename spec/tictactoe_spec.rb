@@ -2,14 +2,14 @@ require 'rspec'
 require './tictactoe'
 
 describe TicTacToe do
-    
+
     it "outputs an empty board" do
 
         # Act
         tictactoe = described_class.new
 
         position = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0]} | #{position[1]} | #{position[2]} ",  "-----------",  " #{position[3]} | #{position[4]} | #{position[5]} ",  "-----------", " #{position[6]} | #{position[7]} | #{position[8]} "]
+        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
         result = tictactoe.display_board()
 
         # Assert
@@ -23,7 +23,7 @@ describe TicTacToe do
         tictactoe = described_class.new
 
         position = [["X", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0]} | #{position[1]} | #{position[2]} ",  "-----------",  " #{position[3]} | #{position[4]} | #{position[5]} ",  "-----------", " #{position[6]} | #{position[7]} | #{position[8]} "]
+        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
         
         tictactoe.update_board(0,0,'X')
         result = tictactoe.display_board()
@@ -39,7 +39,7 @@ describe TicTacToe do
         tictactoe = described_class.new
 
         position = [[" ", "X", " "], [" ", " ", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0]} | #{position[1]} | #{position[2]} ",  "-----------",  " #{position[3]} | #{position[4]} | #{position[5]} ",  "-----------", " #{position[6]} | #{position[7]} | #{position[8]} "]
+        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
         
         tictactoe.update_board(0,1,'X')
         result = tictactoe.display_board()
@@ -55,7 +55,7 @@ describe TicTacToe do
         tictactoe = described_class.new
         
         position = [[" ", "X", " "], [" ", "O", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0]} | #{position[1]} | #{position[2]} ",  "-----------",  " #{position[3]} | #{position[4]} | #{position[5]} ",  "-----------", " #{position[6]} | #{position[7]} | #{position[8]} "]
+        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
         
         tictactoe.update_board(0,1,'X')
         tictactoe.update_board(1,1,'O')
@@ -74,7 +74,7 @@ describe TicTacToe do
         tictactoe = described_class.new
         
         position = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-        expected_board = [" #{position[0]} | #{position[1]} | #{position[2]} ",  "-----------",  " #{position[3]} | #{position[4]} | #{position[5]} ",  "-----------", " #{position[6]} | #{position[7]} | #{position[8]} "]
+        expected_board = [" #{position[0][0]} | #{position[0][1]} | #{position[0][2]} ",  "-----------",  " #{position[1][0]} | #{position[1][1]} | #{position[1][2]} ",  "-----------", " #{position[2][0]} | #{position[2][1]} | #{position[2][2]} "]
 
         result = tictactoe.is_empty?(1,1)
 
@@ -97,18 +97,42 @@ describe TicTacToe do
     
     end
 
-    it "user is prompted to 'try again' when position is full" do
+
+    it "checks turn function works for updating the board" do
 
         # Act
         tictactoe = described_class.new
-        
-        tictactoe.update_board(0,0,'X')
 
+        puts "test1"
+        tictactoe.turn()
 
-        result = tictactoe.update_board(0,0,'O')
+        result = tictactoe.position
+
+        position = [["X", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
         # Assert
-        expect(result).to eq('Position is occupied. Try again!')
+        expect(result).to eq(position)
     
-    end
+    end 
+
+    it "checks turn function works for an occupied position" do
+
+        # Act
+        tictactoe = described_class.new
+
+        puts "test2.1"
+        tictactoe.turn()
+        puts "test2.2"
+        tictactoe.turn()
+
+        result = tictactoe.position
+
+        position = [["X", "O", " "], [" ", " ", " "], [" ", " ", " "]]
+
+
+        # Assert
+        expect(result).to eq(position)
+    
+    end 
+
 end
