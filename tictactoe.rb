@@ -20,17 +20,23 @@ class TicTacToe
         permutation_one = @position[0][0], @position[0][1], @position[0][2]
     end
 
+    def user_input_to_index()
+        print "Please enter your row coordinates: "
+        row = gets.chomp.to_i - 1
+        print "And now, please enter your column coordinates: "
+        column = gets.chomp.to_i - 1
+        return [row, column]
+    end
+
     def turn()
         @turn_count = 0
         while @turn_count < 9
             k = 0
             while k == 0 
-                print "Please enter your symbol: "
-                symbol = gets.chomp
-                print "Please enter your row coordinates: "
-                row = gets.chomp.to_i 
-                print "And now, please enter your column coordinates: "
-                column = gets.chomp.to_i
+                symbol = 'X'
+                user_input = user_input_to_index()
+                row = user_input[0]
+                column = user_input[1]
 
                 if is_empty?(row,column)
                     update_board(row, column, symbol)
