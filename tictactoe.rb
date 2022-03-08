@@ -28,25 +28,37 @@ class TicTacToe
         return [row, column]
     end
 
-    def turn()
-        @turn_count = 0
-        while @turn_count < 9
-            k = 0
-            while k == 0 
-                symbol = 'X'
-                user_input = user_input_to_index()
-                row = user_input[0]
-                column = user_input[1]
+    def turn(symbol)
+        stop = 0
+        while stop == 0 
+            user_input = user_input_to_index()
+            row = user_input[0]
+            column = user_input[1]
 
-                if is_empty?(row,column)
-                    update_board(row, column, symbol)
-                    k += 1
-                    @turn_count += 1
-                else     
-                    print "This slot is already taken, try again! "
-                end     
+            if is_empty?(row,column)
+                update_board(row, column, symbol)
+                puts display_board
+                stop += 1
+            else     
+                print "This slot is already taken, try again! "
+            end     
+        end
+    
+    end
+
+    def game()
+        puts display_board()
+
+        while @turn_count < 9
+            if @turn_count.even? 
+                turn('X')
+                @turn_count += 1
+            else 
+                turn('O')
+                @turn_count += 1
             end
         end
+
     end
 
 
