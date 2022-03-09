@@ -211,20 +211,30 @@ describe Tictactoe do
     
     end
 
-    it "checks computer function" do
+    # it "checks computer function" do
+
+    #     # Act
+    #     tictactoe = described_class.new
+
+    #     puts "computer turn function"
+
+    #     tictactoe.game
+
+    #     result = tictactoe.position
+    #     expected_position = [["O", "X", "O"], ["X", "O", "X"], ["X", "O", "X"]]
+
+    #     # Assert
+    #     expect(result).to eq(expected_position)
+    
+    # end 
+
+    it "checks who_won? function" do
 
         # Act
         tictactoe = described_class.new
 
-        puts "computer turn function"
-
-        tictactoe.game
-
-        result = tictactoe.position
-        expected_position = [["O", "X", "O"], ["X", "O", "X"], ["X", "O", "X"]]
-
         # Assert
-        expect(result).to eq(expected_position)
+        expect(tictactoe).to respond_to(:who_won?)
     
     end 
 
